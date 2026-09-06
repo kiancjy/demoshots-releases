@@ -1,6 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
-  <channel>
-    <title>Demoshots</title>
-  </channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Demoshots</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Sun, 06 Sep 2026 22:01:13 +0100</pubDate>
+            <sparkle:version>42</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.2</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[<p>First beta.</p>
+]]></description>
+            <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.0.dmg" length="11727537" type="application/octet-stream" sparkle:edSignature="8vCBZ/HytmhImYUO6yLriux1edgon1lggr1BXwsTkv9FXuKoXBeTcQQY2Rg6hP2u++2ZG/RbwngY/c/jx4kbBw=="/>
+        </item>
+    </channel>
 </rss>
