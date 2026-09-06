@@ -3,6 +3,17 @@
     <channel>
         <title>Demoshots</title>
         <item>
+            <title>0.1.2</title>
+            <pubDate>Sun, 06 Sep 2026 22:46:04 +0100</pubDate>
+            <sparkle:version>49</sparkle:version>
+            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.2</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[<p>Open note from the Sessions window. Notes group frames into scenes.</p>
+]]></description>
+            <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.2.dmg" length="11728740" type="application/octet-stream" sparkle:edSignature="q9lHU817o5iBgTQu/IceTHVl6WootA8Pdx5b+j3YRnckBl5XX/ExXtGmsurx1MB6oYWhJ4F7XuM75uXlOYaJDQ=="/>
+        </item>
+        <item>
             <title>0.1.1</title>
             <pubDate>Sun, 06 Sep 2026 22:06:27 +0100</pubDate>
             <sparkle:version>43</sparkle:version>
