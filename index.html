@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demoshots - Give the demo. Get the notes.</title>
+<meta name="description" content="A macOS menu bar app that records your demo - a frame every second, your screenshots, and what was said - and writes the note. Audio never leaves your Mac.">
+<meta property="og:title" content="Demoshots - Give the demo. Get the notes.">
+<meta property="og:description" content="Records your demo on your Mac and writes the note. Audio never leaves the machine.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%2314151a' stroke-width='1.5'%3E%3Ccircle cx='12' cy='13' r='3'/%3E%3Cpath stroke-linecap='round' d='M3 13c0-2.8 0-4.2.67-5.2A3.3 3.3 0 0 1 4.78 6.67C5.79 6 7.19 6 10 6h4c2.81 0 4.21 0 5.22.67.44.3.81.67 1.11 1.11.67 1.01.67 2.41.67 5.22s0 4.21-.67 5.22c-.3.44-.67.81-1.11 1.11-1.01.67-2.41.67-5.22.67h-4c-2.81 0-4.21 0-5.22-.67a3.3 3.3 0 0 1-1.11-1.11c-.23-.35-.38-.74-.48-1.22'/%3E%3Cpath stroke-linecap='round' d='M18 10h-.5'/%3E%3Cpath stroke-linecap='round' d='M14.5 3.5h-5'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  /* Version, size, and DMG link appear in three places, all marked RELEASE below.
+     Update them when a new DMG lands here. */
+  :root {
+    --ink: #14151a;
+    --ink-2: #4a4d57;
+    --ink-3: #85899a;
+    --paper: #f7f6f3;
+    --rule: #e2e0da;
+    --rule-2: #eceae4;
+    --rec: #e0483d;
+    --link: #1b62d8;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- top ---------- */
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 26px 0 0; }
+  .lockup { display: flex; align-items: center; gap: 9px; font-weight: 590; letter-spacing: -0.015em; font-size: 16px; }
+  .lockup svg { width: 21px; height: 21px; color: var(--ink); display: block; }
+  .top nav { font-size: 14px; display: flex; gap: 20px; }
+  .top nav a { color: var(--ink-3); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 80px 0 0; max-width: 620px; }
+  h1 { font-size: 60px; line-height: 1.02; letter-spacing: -0.038em; font-weight: 600; margin: 0 0 22px; max-width: 12ch; }
+  .lede { font-size: 20px; line-height: 1.5; color: var(--ink-2); margin: 0 0 34px; max-width: 46ch; }
+  .lede b { font-weight: 560; color: var(--ink); }
+  .getrow { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; background: var(--ink); color: #fff; font-size: 15px; font-weight: 550;
+    letter-spacing: -0.006em; padding: 12px 20px; border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(20,21,26,.28), 0 6px 18px -8px rgba(20,21,26,.45);
+  }
+  .btn:hover { text-decoration: none; background: #000; }
+  .meta { font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
+  .meta b { font-weight: 550; color: var(--ink-2); }
+
+  /* ---------- product shot ---------- */
+  .stage {
+    margin: 64px 0 0; padding: 46px 0 54px;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #ffffff 0%, rgba(255,255,255,0) 62%),
+      linear-gradient(180deg, #efece5 0%, #f7f6f3 100%);
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: center;
+  }
+  .menubar { width: 340px; filter: drop-shadow(0 1px 1px rgba(20,21,26,.10)) drop-shadow(0 22px 40px rgba(20,21,26,.18)); }
+  .bar {
+    display: flex; align-items: center; justify-content: flex-end; gap: 14px;
+    height: 24px; padding: 0 8px 0 0; margin: 0 0 7px;
+    background: rgba(255,255,255,.72); border: 1px solid rgba(20,21,26,.07); border-radius: 6px; color: var(--ink-2);
+  }
+  .bar svg { width: 15px; height: 15px; display: block; color: var(--ink); }
+  .bar .tick { width: 15px; height: 11px; border-radius: 2px; background: rgba(20,21,26,.13); }
+  .bar .clock { font-size: 11px; color: var(--ink-2); }
+  .panel {
+    background: rgba(252,251,249,.98); border: 1px solid rgba(20,21,26,.10);
+    border-radius: 11px; padding: 12px; font-size: 13px;
+  }
+  .panel .hd { font-weight: 590; font-size: 13px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 7px; }
+  .dot-rec { width: 8px; height: 8px; border-radius: 50%; background: var(--rec); box-shadow: 0 0 0 3px rgba(224,72,61,.16); flex: none; }
+  .panel .sub { font-size: 11px; color: var(--ink-3); margin: 2px 0 0; }
+  .hr { height: 1px; background: rgba(20,21,26,.10); margin: 10px -12px; }
+  .mrow { display: flex; gap: 8px; }
+  .mbtn {
+    flex: 1; text-align: center; font-size: 12.5px; font-weight: 500; padding: 4px 8px; border-radius: 6px;
+    background: #fff; border: 1px solid rgba(20,21,26,.14); box-shadow: 0 1px 0 rgba(20,21,26,.05);
+  }
+  .wave { display: flex; align-items: center; gap: 7px; margin: 9px 0 0; }
+  .wave .lbl { font-size: 11px; color: var(--ink-3); width: 26px; }
+  .bars { display: flex; align-items: center; gap: 2px; height: 15px; }
+  .bars i { width: 2px; border-radius: 1px; display: block; }
+  .g i { background: #3aa76d; } .b i { background: #4a80d8; }
+  .lines { margin: 10px 0 0; display: grid; gap: 3px; }
+  .ln { font-size: 11.5px; line-height: 1.35; color: var(--ink-2); }
+  .ln span { color: var(--ink-3); }
+  .ln.live { color: var(--ink-3); font-style: italic; }
+  .perm { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--ink-2); margin: 0 0 4px; }
+  .ok { width: 7px; height: 7px; border-radius: 50%; background: #35a35f; }
+  .ft { display: flex; gap: 12px; font-size: 11.5px; color: var(--link); }
+  .ft .sp { margin-left: auto; }
+  .ver { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); margin: 7px 0 0; }
+  .ver a { font-size: 11px; }
+  .caption { text-align: center; font-size: 13.5px; color: var(--ink-3); margin: 22px 0 0; }
+
+  /* ---------- body rows ---------- */
+  section { border-bottom: 1px solid var(--rule-2); }
+  section:last-of-type { border-bottom: 0; }
+  .row { display: grid; grid-template-columns: 5fr 7fr; gap: 40px; padding: 46px 0; align-items: start; }
+  .row h2 { font-size: 26px; line-height: 1.2; letter-spacing: -0.028em; font-weight: 590; margin: 0; max-width: 15ch; }
+  .row p { margin: 0 0 14px; color: var(--ink-2); max-width: 54ch; }
+  .row p:last-child { margin-bottom: 0; }
+  .row b { font-weight: 570; color: var(--ink); }
+  kbd {
+    font-size: 13px; font-weight: 500; background: #fff; border: 1px solid var(--rule); border-bottom-width: 2px;
+    border-radius: 4px; padding: 2px 6px; color: var(--ink); white-space: nowrap;
+  }
+  .files { color: var(--ink); font-weight: 500; }
+
+  /* ---------- install ---------- */
+  .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 12px; padding: 0 0 20px; }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li::before { content: counter(s); font-size: 15px; font-weight: 500; color: var(--ink-3); line-height: 1.6; }
+  .steps p { margin: 0; color: var(--ink-2); max-width: 52ch; }
+  .shot {
+    grid-column: 2; margin: 14px 0 0; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
+    background: #fff; line-height: 0;
+  }
+  .shot img { width: 100%; height: auto; display: block; }
+  .note { font-size: 14.5px; color: var(--ink-3); max-width: 54ch; margin: 24px 0 0; }
+
+  /* ---------- footer ---------- */
+  footer { padding: 36px 0 64px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-3); }
+  footer a { color: var(--ink-3); }
+
+  @media (max-width: 760px) {
+    h1 { font-size: 42px; }
+    .row { grid-template-columns: 1fr; gap: 14px; padding: 34px 0; }
+    .row h2 { max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <div class="lockup">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"/><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="13" r="3"/><path stroke-linecap="round" d="M3.0001 12.9999C3.0001 10.191 2.99995 8.78673 3.67407 7.77783C3.96591 7.34107 4.34091 6.96607 4.77767 6.67423C5.78656 6.00011 7.19103 6.00011 9.99995 6.00011H14C16.8089 6.00011 18.2133 6.00011 19.2222 6.67423C19.659 6.96607 20.034 7.34107 20.3258 7.77783C21 8.78673 21.0001 10.191 21.0001 12.9999C21.0001 15.8088 21.0001 17.2133 20.326 18.2222C20.0341 18.6589 19.6591 19.0339 19.2224 19.3258C18.2135 19.9999 16.809 19.9999 14.0001 19.9999H10.0001C7.19117 19.9999 5.78671 19.9999 4.77782 19.3258C4.34106 19.0339 3.96605 18.6589 3.67422 18.2222C3.44239 17.8752 3.29028 17.4815 3.19049 16.9999"/><path stroke-linecap="round" d="M18 10H17.5"/><path stroke-linecap="round" d="M14.5 3.5H9.5"/></g></svg>
+      Demoshots
+    </div>
+    <nav>
+      <a href="#install">Install</a>
+      <a href="appcast.xml">Releases</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <h1>Give the demo. Get the notes.</h1>
+    <p class="lede">A menu bar app that records your demo on your Mac - a frame every second, your screenshots,
+      and what was said. When you stop, it writes the note. <b>Your audio never leaves the machine.</b></p>
+    <div class="getrow">
+      <!-- RELEASE: link -->
+      <a class="btn" href="Demoshots-0.1.2.dmg">Download for Mac</a>
+      <!-- RELEASE: version and size -->
+      <div class="meta"><b>Version 0.1.2</b>, 12 MB, Apple silicon<br>macOS 14.2 or later. Free during the beta.</div>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <div>
+    <div class="menubar">
+      <div class="bar">
+        <span class="tick"></span><span class="tick"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"/><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="13" r="3"/><path stroke-linecap="round" d="M3.0001 12.9999C3.0001 10.191 2.99995 8.78673 3.67407 7.77783C3.96591 7.34107 4.34091 6.96607 4.77767 6.67423C5.78656 6.00011 7.19103 6.00011 9.99995 6.00011H14C16.8089 6.00011 18.2133 6.00011 19.2222 6.67423C19.659 6.96607 20.034 7.34107 20.3258 7.77783C21 8.78673 21.0001 10.191 21.0001 12.9999C21.0001 15.8088 21.0001 17.2133 20.326 18.2222C20.0341 18.6589 19.6591 19.0339 19.2224 19.3258C18.2135 19.9999 16.809 19.9999 14.0001 19.9999H10.0001C7.19117 19.9999 5.78671 19.9999 4.77782 19.3258C4.34106 19.0339 3.96605 18.6589 3.67422 18.2222C3.44239 17.8752 3.29028 17.4815 3.19049 16.9999"/><path stroke-linecap="round" d="M18 10H17.5"/><path stroke-linecap="round" d="M14.5 3.5H9.5"/></g></svg>
+        <span class="clock">Mon 11:42</span>
+      </div>
+
+      <div class="panel">
+        <div class="hd"><span class="dot-rec"></span>Recording - 128 frames, 2 shots, 3 flagged, 41 lines</div>
+        <div class="sub">Session 2026-09-07-1138</div>
+        <div class="hr"></div>
+        <div class="mrow">
+          <div class="mbtn">Stop recording</div>
+          <div class="mbtn">Flag this moment</div>
+        </div>
+        <div class="wave">
+          <span class="lbl">You</span>
+          <span class="bars g"><i style="height:3px"></i><i style="height:6px"></i><i style="height:11px"></i><i style="height:7px"></i><i style="height:4px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:8px"></i><i style="height:5px"></i><i style="height:10px"></i><i style="height:14px"></i><i style="height:9px"></i><i style="height:6px"></i><i style="height:3px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:8px"></i><i style="height:4px"></i><i style="height:9px"></i><i style="height:6px"></i><i style="height:11px"></i><i style="height:15px"></i><i style="height:10px"></i><i style="height:5px"></i></span>
+        </div>
+        <div class="wave">
+          <span class="lbl">Call</span>
+          <span class="bars b"><i style="height:2px"></i><i style="height:3px"></i><i style="height:5px"></i><i style="height:3px"></i><i style="height:2px"></i><i style="height:4px"></i><i style="height:7px"></i><i style="height:11px"></i><i style="height:14px"></i><i style="height:9px"></i><i style="height:6px"></i><i style="height:10px"></i><i style="height:13px"></i><i style="height:8px"></i><i style="height:5px"></i><i style="height:3px"></i><i style="height:6px"></i><i style="height:9px"></i><i style="height:12px"></i><i style="height:7px"></i><i style="height:4px"></i><i style="height:2px"></i><i style="height:3px"></i><i style="height:2px"></i></span>
+        </div>
+        <div class="lines">
+          <div class="ln"><span>You</span> - and this is the timeline, so every flag lands where it happened</div>
+          <div class="ln"><span>Call</span> can it pull the screenshots I take myself?</div>
+          <div class="ln live"><span>You</span> yes, anything from Cmd Shift 4 goes straight in...</div>
+        </div>
+        <div class="hr"></div>
+        <div class="perm"><span class="ok"></span>Screen Recording</div>
+        <div class="perm"><span class="ok"></span>Microphone</div>
+        <div class="hr"></div>
+        <div class="ft">Sessions <span>Sessions folder</span> <span>Settings</span> <span class="sp">Quit</span></div>
+        <!-- RELEASE: version -->
+        <div class="ver"><span>Version 0.1.2</span><span>Check for updates</span></div>
+      </div>
+    </div>
+    <p class="caption">The whole app. It lives in the menu bar and nowhere else.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="row">
+      <h2>Click Start before the call. Click Stop after.</h2>
+      <div>
+        <p>That is the whole workflow. Demoshots takes a screen frame about once a second, so the note can say what was
+          on screen and not only what was said. It picks up the <kbd>&#8984;&#8679;4</kbd> screenshots you already take.</p>
+        <p>Press <kbd>&#8963;&#8679;M</kbd> when something matters - a question, an objection, a "can it do X?" - and
+          that moment is flagged in the timeline. If you use Zoom, Demoshots can arm itself when a meeting starts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <h2>Transcribed on your Mac, in your words.</h2>
+      <div>
+        <p>Speech runs on your machine with an on-device model. Raw audio is never uploaded - not to us, not to anyone.
+          There is no cloud fallback: if it was recorded, it was transcribed right there.</p>
+        <p>Every session is a plain folder - <span class="files">meta.json, captures.jsonl, transcript.jsonl, note.md</span>,
+          and the images. Scrub the timeline in the Sessions window, or export a session as a zip and point your own
+          tools at it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <h2>Turn sync on, get the note in your inbox.</h2>
+      <div>
+        <p>Sync is off by default. With it off, nothing from a recording leaves your Mac. Turn it on and sign in with
+          your email - a link, no password. After each recording, Demoshots uploads the frames, your screenshots, and
+          the transcript text. A few minutes later one email arrives with a link to the note.</p>
+        <p>Notes are free during the beta while the limits and the storage policy are still being written.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="row">
+      <h2>Four steps, five minutes, once.</h2>
+      <div>
+        <ol class="steps">
+          <li><p><b>Download</b> the DMG. Open it and drag Demoshots onto the Applications folder next to it.</p></li>
+          <li>
+            <p><b>Open Anyway.</b> The beta is not signed with an Apple Developer ID yet, so the first launch is
+              blocked. Click <b>Done</b> - not Move to Trash. Open System Settings &gt; Privacy &amp; Security, scroll
+              to Security, and click <b>Open Anyway</b>. You do this once. Updates arrive inside the app.</p>
+            <div class="shot"><img src="install-open-anyway.png" alt="The Open Anyway button under Privacy and Security in System Settings"></div>
+          </li>
+          <li><p><b>Grant three permissions</b> from the menu: Screen Recording, Microphone, and the Desktop folder for
+            screenshots. The menu has a button for each one.</p></li>
+          <li><p><b>Record.</b> <kbd>&#8984;&#8679;R</kbd> to start, <kbd>&#8963;&#8679;M</kbd> to flag,
+            <kbd>&#8984;&#8679;S</kbd> to open your sessions.</p></li>
+        </ol>
+        <p class="note">Requirements: a Mac with Apple silicon (M1 or later), macOS 14.2 or later, about 5 GB of free
+          disk for the speech model and your sessions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <h2>Before you record other people.</h2>
+      <div>
+        <p>Demoshots records your screen, your microphone, and the other side of the call. It does not announce itself
+          to the people you are talking to. That is on purpose: you are the one party in the room, and telling the
+          others is your job, not the software's.</p>
+        <p>Tell everyone on the call that you are recording and what for. Recording laws differ between countries and
+          between US states, and some require every participant to agree. Getting that consent, and what you do with
+          the recording afterwards, is on you.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Made by Kian in London. Beta - things will break.</div>
+    <div><a href="#install">Install</a> &middot; <a href="appcast.xml">Releases</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
