@@ -3,6 +3,17 @@
     <channel>
         <title>Demoshots</title>
         <item>
+            <title>0.1.3</title>
+            <pubDate>Mon, 07 Sep 2026 21:40:55 +0100</pubDate>
+            <sparkle:version>54</sparkle:version>
+            <sparkle:shortVersionString>0.1.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.2</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[<p>Stop recording now stops. Permission prompts appear on first launch.</p>
+]]></description>
+            <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.3.dmg" length="11741767" type="application/octet-stream" sparkle:edSignature="OawwwMWgrNvRfgJ8fUrOjqQ9ygpZITvNIPastzwtocWr+E6AkBxDlkFIhBJQEv6GsaF5l7jkOGSutO/ZNZXjDA=="/>
+        </item>
+        <item>
             <title>0.1.2</title>
             <pubDate>Sun, 06 Sep 2026 22:46:04 +0100</pubDate>
             <sparkle:version>49</sparkle:version>
@@ -23,17 +34,6 @@
             <description><![CDATA[<p>Test update.</p>
 ]]></description>
             <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.1.dmg" length="11727479" type="application/octet-stream" sparkle:edSignature="hOv9d+VmMUYtffZh0+DfWYm8jkPEFOtl8+hTJLZNzJ32FWmQVAHV6E5NVpE3+8IBdsQGBpOCryT1vnp3hKt8BA=="/>
-        </item>
-        <item>
-            <title>0.1.0</title>
-            <pubDate>Sun, 06 Sep 2026 22:01:13 +0100</pubDate>
-            <sparkle:version>42</sparkle:version>
-            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.2</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[<p>First beta.</p>
-]]></description>
-            <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.0.dmg" length="11727537" type="application/octet-stream" sparkle:edSignature="8vCBZ/HytmhImYUO6yLriux1edgon1lggr1BXwsTkv9FXuKoXBeTcQQY2Rg6hP2u++2ZG/RbwngY/c/jx4kbBw=="/>
         </item>
     </channel>
 </rss>
