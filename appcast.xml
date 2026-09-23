@@ -3,6 +3,17 @@
     <channel>
         <title>Demoshots</title>
         <item>
+            <title>0.2.1</title>
+            <pubDate>Wed, 23 Sep 2026 22:27:19 +0100</pubDate>
+            <sparkle:version>67</sparkle:version>
+            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.2</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[<p>Copy for AI now pastes the prompt as a file too, so apps that attach files keep it.</p>
+]]></description>
+            <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.2.1.dmg" length="11655634" type="application/octet-stream" sparkle:edSignature="SiPEVjG+yGfbp9Efc1BWds5vDXNE1+j+gcOZ+08+YXyYr3m+JxfSebd+Sc9KO3OFX4BV+0hEkRxFeLTIK37dAA=="/>
+        </item>
+        <item>
             <title>0.2.0</title>
             <pubDate>Wed, 23 Sep 2026 22:21:08 +0100</pubDate>
             <sparkle:version>64</sparkle:version>
@@ -23,17 +34,6 @@
             <description><![CDATA[<p>Stop recording now stops. Permission prompts appear on first launch.</p>
 ]]></description>
             <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.3.dmg" length="11741767" type="application/octet-stream" sparkle:edSignature="OawwwMWgrNvRfgJ8fUrOjqQ9ygpZITvNIPastzwtocWr+E6AkBxDlkFIhBJQEv6GsaF5l7jkOGSutO/ZNZXjDA=="/>
-        </item>
-        <item>
-            <title>0.1.2</title>
-            <pubDate>Sun, 06 Sep 2026 22:46:04 +0100</pubDate>
-            <sparkle:version>49</sparkle:version>
-            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.2</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[<p>Open note from the Sessions window. Notes group frames into scenes.</p>
-]]></description>
-            <enclosure url="https://kiancjy.github.io/demoshots-releases/Demoshots-0.1.2.dmg" length="11728740" type="application/octet-stream" sparkle:edSignature="q9lHU817o5iBgTQu/IceTHVl6WootA8Pdx5b+j3YRnckBl5XX/ExXtGmsurx1MB6oYWhJ4F7XuM75uXlOYaJDQ=="/>
         </item>
     </channel>
 </rss>
