@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demoshots - Give the demo. Get the notes.</title>
-<meta name="description" content="A macOS menu bar app that records your demo - a frame every second, your screenshots, and what was said - and writes the note. Audio never leaves your Mac.">
-<meta property="og:title" content="Demoshots - Give the demo. Get the notes.">
-<meta property="og:description" content="Records your demo on your Mac and writes the note. Audio never leaves the machine.">
+<title>Demoshots - Give the demo. Keep everything.</title>
+<meta name="description" content="A macOS menu bar app that records your demo - a frame every second, your screenshots, and what was said - on your Mac. One click copies it all into the AI you already use, to write the note.">
+<meta property="og:title" content="Demoshots - Give the demo. Keep everything.">
+<meta property="og:description" content="Records your demo on your Mac. One click copies it into your own AI to write the note.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%2314151a' stroke-width='1.5'%3E%3Ccircle cx='12' cy='13' r='3'/%3E%3Cpath stroke-linecap='round' d='M3 13c0-2.8 0-4.2.67-5.2A3.3 3.3 0 0 1 4.78 6.67C5.79 6 7.19 6 10 6h4c2.81 0 4.21 0 5.22.67.44.3.81.67 1.11 1.11.67 1.01.67 2.41.67 5.22s0 4.21-.67 5.22c-.3.44-.67.81-1.11 1.11-1.01.67-2.41.67-5.22.67h-4c-2.81 0-4.21 0-5.22-.67a3.3 3.3 0 0 1-1.11-1.11c-.23-.35-.38-.74-.48-1.22'/%3E%3Cpath stroke-linecap='round' d='M18 10h-.5'/%3E%3Cpath stroke-linecap='round' d='M14.5 3.5h-5'/%3E%3C/g%3E%3C/svg%3E">
 <style>
@@ -159,14 +159,14 @@
   </div>
 
   <div class="hero">
-    <h1>Give the demo. Get the notes.</h1>
+    <h1>Give the demo. Keep everything.</h1>
     <p class="lede">A menu bar app that records your demo on your Mac - a frame every second, your screenshots,
-      and what was said. When you stop, it writes the note. <b>Your audio never leaves the machine.</b></p>
+      and what was said. When you stop, one click copies it all into Claude, ChatGPT, or whatever AI you use, with a prompt that writes the note. <b>Your audio never leaves the machine.</b></p>
     <div class="getrow">
       <!-- RELEASE: link -->
-      <a class="btn" href="Demoshots-0.1.3.dmg">Download for Mac</a>
+      <a class="btn" href="Demoshots-0.2.0.dmg">Download for Mac</a>
       <!-- RELEASE: version and size -->
-      <div class="meta"><b>Version 0.1.3</b>, 12 MB, Apple silicon<br>macOS 14.2 or later. Free during the beta.</div>
+      <div class="meta"><b>Version 0.2.0</b>, 12 MB, Apple silicon<br>macOS 14.2 or later. Free, no account.</div>
     </div>
   </div>
 </div>
@@ -207,7 +207,7 @@
         <div class="hr"></div>
         <div class="ft">Sessions <span>Sessions folder</span> <span>Settings</span> <span class="sp">Quit</span></div>
         <!-- RELEASE: version -->
-        <div class="ver"><span>Version 0.1.3</span><span>Check for updates</span></div>
+        <div class="ver"><span>Version 0.2.0</span><span>Check for updates</span></div>
       </div>
     </div>
     <p class="caption">The whole app. It lives in the menu bar and nowhere else.</p>
@@ -234,7 +234,7 @@
       <div>
         <p>Speech runs on your machine with an on-device model. Raw audio is never uploaded - not to us, not to anyone.
           There is no cloud fallback: if it was recorded, it was transcribed right there.</p>
-        <p>Every session is a plain folder - <span class="files">meta.json, captures.jsonl, transcript.jsonl, note.md</span>,
+        <p>Every session is a plain folder - <span class="files">meta.json, captures.jsonl, transcript.jsonl</span>,
           and the images. Scrub the timeline in the Sessions window, or export a session as a zip and point your own
           tools at it.</p>
       </div>
@@ -243,12 +243,13 @@
 
   <section>
     <div class="row">
-      <h2>Turn sync on, get the note in your inbox.</h2>
+      <h2>Copy for AI. Paste. Get the note.</h2>
       <div>
-        <p>Sync is off by default. With it off, nothing from a recording leaves your Mac. Turn it on and sign in with
-          your email - a link, no password. After each recording, Demoshots uploads the frames, your screenshots, and
-          the transcript text. A few minutes later one email arrives with a link to the note.</p>
-        <p>Notes are free during the beta while the limits and the storage policy are still being written.</p>
+        <p>Click <b>Copy last session for AI</b> in the menu. Demoshots picks one frame per scene - up to 20, your
+          flagged moments first - and puts them on the clipboard with the transcript and a prompt that asks for a
+          summary, the actions, and a timeline. Paste into the Claude or ChatGPT app and send.</p>
+        <p>A browser tab takes the text but not the images, so the same click also saves a folder to your Desktop.
+          Drag the frames in from there. There is no account and no server. Nothing leaves your Mac until you paste it.</p>
       </div>
     </div>
   </section>
